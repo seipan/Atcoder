@@ -8,9 +8,10 @@ int main(){
 
     for(int i=0;i<N;i++){
         int res = 0;
+        int X = i;
         while(i!=0){
             res++;
-            i = A[i];
+            X = A[X];
         }
         cout << res << endl;
     }   
