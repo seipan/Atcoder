@@ -1,22 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
+const int inf = INT_MAX / 2;
+typedef pair<ll,ll> pi;
+#define ALL(a)  (a).begin(),(a).end()
+
 
 int main(){
-    int N,Y;
-    cin >> N >> Y;
-
-    int res10000 = -1, res5000 = -1, res1000 = -1;
-
-    for(int a=0;a<-N;a++){
-        for(int b=0;a+b<=N;b++){
-            int c = N-a-b;
-            if(10000*a + 5000*b + 1000*c == Y){
-                res10000 = a;
-                res5000 = b;
-                res1000 = c;
+    ll N,Y;cin >> N >> Y;
+    for(ll i=0;i<=N;i++){
+        for(ll j=0;j<=N;j++){
+            ll c = N- (i+j);
+            if(c<0) continue;
+            if((10000*i + 5000*j + 1000*c) == Y){
+                cout << i << " " << j << " " << c << endl;
+                return 0;
             }
         }
     }
 
-    cout << res10000 << " " << res5000 << " " << res1000 << endl;
+    cout << -1 << " " << -1 << " " << -1 << endl;
+
 }
