@@ -22,6 +22,8 @@ inline int ctoi(char c) {return c - '0';}
 template <typename T> inline bool chmin(T& a, const T& b) {bool compare = a > b; if (a > b) a = b; return compare;}
 template <typename T> inline bool chmax(T& a, const T& b) {bool compare = a < b; if (a < b) a = b; return compare;}
 
+using Graph = vector<vector<int>>;
+
 //高速累乗
 ll powpow(ll x, ll n) {
   if (n == 0) return 1;
@@ -44,32 +46,13 @@ ld mysqrtl(ld x)
 
 
 int main(){
-    ll H = in_ll();
-    ll W = in_ll();
+    string S = in_str();
+    ll N = S.size();
 
-    vector<string> S(H);
-    for(ll i=0;i<H;i++) cin >> S[i];
-
-    vector<vector<int>> data(H, vector<int>(W,0));
-
-    for(ll i=0;i<H;i++){
-        for(ll j=0;j<W;j++){
-            bool flag = true;
-            if(S[i].at(j) == '#'){
-                flag = false;
-                if(i+1 < H && S[i+1].at(j) == '#') flag = true;
-                if(i -1 >=0 && S[i-1].at(j) == '#')flag = true;
-                if(j+1 < W && S[i].at(j+1) == '#')flag = true;
-                if(j-1 >= 0 && S[i].at(j-1) == '#')flag = true;
-
-            }
-            if(!flag){
-                //cout << i+1 << " "<< j+1 << endl;
-                cout << "No" << endl;
-                return 0;
-            }
-        }
+    ll count = 0;
+    for(ll i=0;i<N-1;i++){
+        if(S[i] != S[i+1]) count++;
     }
 
-    cout << "Yes" << endl;
+    cout << count << endl;
 }
