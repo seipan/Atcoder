@@ -44,32 +44,6 @@ ld mysqrtl(ld x)
 
 
 int main(){
-    ll H = in_ll();
-    ll W = in_ll();
-
-    vector<string> S(H);
-    for(ll i=0;i<H;i++) cin >> S[i];
-
-    vector<vector<int>> data(H, vector<int>(W,0));
-
-    for(ll i=0;i<H;i++){
-        for(ll j=0;j<W;j++){
-            bool flag = true;
-            if(S[i].at(j) == '#'){
-                flag = false;
-                if(i+1 < H && S[i+1].at(j) == '#') flag = true;
-                if(i -1 >=0 && S[i-1].at(j) == '#')flag = true;
-                if(j+1 < W && S[i].at(j+1) == '#')flag = true;
-                if(j-1 >= 0 && S[i].at(j-1) == '#')flag = true;
-
-            }
-            if(!flag){
-                //cout << i+1 << " "<< j+1 << endl;
-                cout << "No" << endl;
-                return 0;
-            }
-        }
-    }
-
-    cout << "Yes" << endl;
+    string S = in_str();
+    cout << S+S << endl;
 }

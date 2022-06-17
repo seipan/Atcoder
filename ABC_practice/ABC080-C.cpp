@@ -4,7 +4,7 @@
 using namespace std;
 typedef long long ll;
 typedef long double ld;
-const int inf = INT_MAX / 2; 
+const int inf = INT_MAX; 
 const ll infl = 1LL << 60;
 typedef pair<ll,ll> pi;
 #define ALL(a)  (a).begin(),(a).end()
@@ -21,6 +21,8 @@ inline int ctoi(char c) {return c - '0';}
 
 template <typename T> inline bool chmin(T& a, const T& b) {bool compare = a > b; if (a > b) a = b; return compare;}
 template <typename T> inline bool chmax(T& a, const T& b) {bool compare = a < b; if (a < b) a = b; return compare;}
+
+using Graph = vector<vector<int>>;
 
 //高速累乗
 ll powpow(ll x, ll n) {
@@ -44,32 +46,39 @@ ld mysqrtl(ld x)
 
 
 int main(){
-    ll H = in_ll();
-    ll W = in_ll();
-
-    vector<string> S(H);
-    for(ll i=0;i<H;i++) cin >> S[i];
-
-    vector<vector<int>> data(H, vector<int>(W,0));
-
-    for(ll i=0;i<H;i++){
-        for(ll j=0;j<W;j++){
-            bool flag = true;
-            if(S[i].at(j) == '#'){
-                flag = false;
-                if(i+1 < H && S[i+1].at(j) == '#') flag = true;
-                if(i -1 >=0 && S[i-1].at(j) == '#')flag = true;
-                if(j+1 < W && S[i].at(j+1) == '#')flag = true;
-                if(j-1 >= 0 && S[i].at(j-1) == '#')flag = true;
-
-            }
-            if(!flag){
-                //cout << i+1 << " "<< j+1 << endl;
-                cout << "No" << endl;
-                return 0;
-            }
-        }
+    ll N = in_ll();
+    vector<vector<ll>> F(N, vector<ll>(10));
+    for(ll i=0;i<N;i++){
+        for(ll j=0;j<10;j++) cin >> F[i][j];
+    }
+    vector<vector<ll>> P(N+1, vector<ll>(11));
+    for(ll i=0;i<N;i++){
+        for(ll j=0;j<11;j++) cin >> P[i][j];
     }
 
-    cout << "Yes" << endl;
+    //bit全探索
+    ll ans = -inf;
+    for (ll bit=1;bit<(1 << 10);++bit) {
+        ll sum = 0;
+ 
+        for(ll i=0;i<N;i++){
+            ll count = 0;
+
+            for(ll j=0;j<10;j++){
+                if(bit & (1 << j)){
+                   if(F[i][j] == 1){
+                       count++;
+                   } 
+                }
+
+            }
+            sum += P[i][count]; 
+
+        }
+        ans = max(ans,sum);
+
+    }
+
+    cout << ans << endl;
+
 }
