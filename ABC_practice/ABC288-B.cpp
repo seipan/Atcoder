@@ -43,3 +43,16 @@ ld mysqrtl(ld x)
   } while (fabsl(x - a*a) > eps);
   return a;
 }
+
+int main(){
+    ll N,K;cin >> N >> K;
+    multiset<string> st;
+    for(ll i=0;i<K;i++){
+        string s;cin >> s;
+        st.insert(s);
+    }
+
+    for(auto &i:st){
+        cout << i << endl;
+    }
+}

@@ -43,3 +43,10 @@ ld mysqrtl(ld x)
   } while (fabsl(x - a*a) > eps);
   return a;
 }
+
+int main(){
+    ll N,M;cin >> N >> M;
+    for(ll i=0;i<M;i++){
+        
+    }
+}

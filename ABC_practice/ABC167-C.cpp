@@ -43,3 +43,30 @@ ld mysqrtl(ld x)
   } while (fabsl(x - a*a) > eps);
   return a;
 }
+
+
+int main(){
+    ll N,M,X;cin >> N >> M >> X;
+
+    vector<ll> C(N);
+    vector<vector<ll>> A(N, vector<ll>(M));
+    
+    for(ll i=0;i<N;i++){
+        cin >> C[i];
+        for(ll j=0;j<M;j++) cin >>A[i][j];
+    }
+
+    ll ans = 0;
+    vector<ll> count(M);
+
+    for(int bit=0;bit < (1<<N);bit++){
+        for (int i = 0; i < N; ++i) {
+            if (bit & (1 << i)){
+                for(ll j=0;j<M;j++){
+                    
+                }
+            }
+        }
+    }
+
+}
